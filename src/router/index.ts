@@ -11,11 +11,32 @@ const router = createRouter({
       },
       children: [
         {
+          path: "/",
+          name: "home",
+          component: () => import("@/views/StatsView.vue"),
+        },
+        {
           path: "dashboard",
           name: "dashboard",
           component: () => import("@/views/DashBoardView.vue"),
           meta: {
             title: "表盘",
+          },
+        },
+        {
+          path: "table",
+          name: "table",
+          component: () => import("@/views/TableView.vue"),
+          meta: {
+            title: "表格",
+          },
+        },
+        {
+          path: "state",
+          name: "home",
+          component: () => import("@/views/StatsView.vue"),
+          meta: {
+            title: "统计表",
           },
         },
         {

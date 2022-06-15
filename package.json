@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.4",
+    "@types/mockjs": "^1.0.6",
+    "axios": "^0.27.2",
+    "echarts": "^5.3.3",
     "element-plus": "^2.2.5",
+    "mockjs": "^1.1.0",
     "pinia": "^2.0.14",
     "sass": "^1.52.3",
     "unplugin-icons": "^0.14.3",

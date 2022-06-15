@@ -12,13 +12,18 @@
             background-color="#05668D"
             active-text-color="#fff"
           >
-            <el-menu-item @click="collapse" index="/">
-              <el-icon><img src="@/assets/logo.svg" /></el-icon>
-              <span>User-Chili</span>
-            </el-menu-item>
+            <div class="Logo">
+              <el-icon @click="collapse"
+                ><img src="@/assets/logo.svg"
+              /></el-icon>
+            </div>
             <el-menu-item index="/">
               <el-icon><House /></el-icon>
               <span>主页</span>
+            </el-menu-item>
+            <el-menu-item index="table">
+              <el-icon><setting /></el-icon>
+              <span>表格</span>
             </el-menu-item>
             <el-sub-menu index="/">
               <template #title>
@@ -26,6 +31,7 @@
                 <span>图表</span>
               </template>
               <el-menu-item index="dashboard">仪表盘</el-menu-item>
+              <el-menu-item index="state">统计图</el-menu-item>
             </el-sub-menu>
             <el-menu-item index="vetting">
               <el-icon><Stamp /></el-icon>
@@ -45,7 +51,9 @@
           <el-header>
             <el-row justify="space-between" align="middle" class="row-bg">
               <el-col :span="6">
-                <div>Relax后台模板</div>
+                <el-icon @click="collapse" class="relax"
+                  ><img src="@/assets/logo.svg" /></el-icon
+                >Relax后台模板
               </el-col>
               <el-col :span="6">
                 <div class="avatar">
@@ -89,6 +97,7 @@
 </template>
 <script setup lang="ts">
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { http } from "@/utiles/http";
 import {
   TrendCharts,
   Setting,
@@ -97,12 +106,17 @@ import {
   Edit,
   ArrowDown,
 } from "@element-plus/icons-vue";
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 const isCollapse = ref(false);
 function collapse() {
   isCollapse.value = !isCollapse.value;
 }
+
+onMounted(async () => {
+  const res = await http.get("mock");
+  console.log(res);
+});
 
 function goBack() {
   return;
@@ -119,6 +133,7 @@ const title = computed(() => {
   width: 200px;
   min-height: 400px;
 }
+
 .el-page-header {
   padding-left: 20px;
 }
@@ -127,5 +142,20 @@ const title = computed(() => {
   display: flex;
   justify-content: end;
   align-items: center;
+}
+.Logo {
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+.Logo .el-icon {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+.relax {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
 }
 </style>
