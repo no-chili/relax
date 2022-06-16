@@ -1,17 +1,41 @@
 <template>
-  <div class="EchartContainer">
-    <div
-      ref="lineEchartElement"
-      :style="{ width: '500px', height: '350px' }"
-    ></div>
-    <div
-      ref="boardEchartElement"
-      :style="{ width: '500px', height: '350px' }"
-    ></div>
+  <div>
+    <el-row class="state-box" :gutter="12">
+      <el-col :span="8">
+        <el-card shadow="hover">
+          <h2>访问量</h2>
+          <div>456</div>
+          <div>昨日新增12</div>
+        </el-card>
+      </el-col>
+      <el-col :span="8">
+        <el-card shadow="hover">
+          <h2>用户总量</h2>
+          <div>431</div>
+          <div>昨日新增12</div>
+        </el-card>
+      </el-col>
+      <el-col :span="8">
+        <el-card shadow="hover">
+          <h2>交易次数</h2>
+          <div>765</div>
+          <div>昨日新增55</div>
+        </el-card>
+      </el-col>
+    </el-row>
+    <div class="EchartContainer">
+      <div
+        ref="lineEchartElement"
+        :style="{ width: '500px', height: '350px' }"
+      ></div>
+      <div
+        ref="boardEchartElement"
+        :style="{ width: '500px', height: '350px' }"
+      ></div>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
 import { init } from "echarts";
 const lineEchartElement = ref();
 const boardEchartElement = ref();
@@ -94,5 +118,8 @@ onMounted(() => {
 .EchartContainer {
   display: flex;
   justify-content: space-between;
+}
+.state-box {
+  margin-bottom: 20px;
 }
 </style>

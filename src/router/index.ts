@@ -12,8 +12,11 @@ const router = createRouter({
       children: [
         {
           path: "/",
-          name: "home",
-          component: () => import("@/views/StatsView.vue"),
+          name: "welcome",
+          component: () => import("@/views/WelcomeView.vue"),
+          meta: {
+            title: "welcome",
+          },
         },
         {
           path: "dashboard",

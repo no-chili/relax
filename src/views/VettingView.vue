@@ -1,20 +1,33 @@
 <template>
   <div>
-    <el-steps :space="200" finish-status="success" :active="active" simple>
-      <el-step title="Step 1" :icon="Edit" />
-      <el-step title="Step 2" :icon="UploadFilled" />
-      <el-step title="Step 3" :icon="Picture" />
-    </el-steps>
-
-    <el-button style="margin-top: 12px" @click="next">Next step</el-button>
+    <el-descriptions
+      title="Vertical list without border"
+      :column="4"
+      size="large"
+      direction="vertical"
+      id="vettingTable"
+    >
+      <el-descriptions-item label="Username">kooriookami</el-descriptions-item>
+      <el-descriptions-item label="Telephone">18100000000</el-descriptions-item>
+      <el-descriptions-item label="Place" :span="2"
+        >Suzhou</el-descriptions-item
+      >
+      <el-descriptions-item label="Remarks">
+        <el-tag size="small">School</el-tag>
+      </el-descriptions-item>
+      <el-descriptions-item label="Address"
+        >No.1188, Wuzhong Avenue, Wuzhong District, Suzhou, Jiangsu Province
+      </el-descriptions-item>
+    </el-descriptions>
+    <el-button @click="toPrintTable">打印</el-button>
   </div>
 </template>
 <script lang="ts" setup>
-import { Edit, UploadFilled, Picture } from "@element-plus/icons-vue";
-import { ref } from "vue";
-const active = ref(1);
-function next() {
-  active.value = active.value + 1;
+import { printTable } from "@/utiles/print";
+//调用打印
+function toPrintTable() {
+  const table = window.document.getElementById("vettingTable");
+  table ? printTable(table) : null;
 }
 </script>
 <style scoped></style>

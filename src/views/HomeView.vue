@@ -18,31 +18,31 @@
               /></el-icon>
             </div>
             <el-menu-item index="/">
-              <el-icon><House /></el-icon>
+              <el-icon><i-ep-house /></el-icon>
               <span>主页</span>
             </el-menu-item>
             <el-menu-item index="table">
-              <el-icon><setting /></el-icon>
+              <el-icon><i-ep-setting /></el-icon>
               <span>表格</span>
             </el-menu-item>
             <el-sub-menu index="/">
               <template #title>
-                <el-icon><TrendCharts /></el-icon>
+                <el-icon><i-ep-trendCharts /></el-icon>
                 <span>图表</span>
               </template>
               <el-menu-item index="dashboard">仪表盘</el-menu-item>
               <el-menu-item index="state">统计图</el-menu-item>
             </el-sub-menu>
             <el-menu-item index="vetting">
-              <el-icon><Stamp /></el-icon>
+              <el-icon><i-ep-stamp /></el-icon>
               <span>审批</span>
             </el-menu-item>
             <el-menu-item index="edit">
-              <el-icon><Edit /></el-icon>
+              <el-icon><i-ep-edit /></el-icon>
               <span>编辑</span>
             </el-menu-item>
             <el-menu-item index="setting">
-              <el-icon><setting /></el-icon>
+              <el-icon><i-ep-setting /></el-icon>
               <span>设置</span>
             </el-menu-item>
           </el-menu>
@@ -50,7 +50,7 @@
         <el-container class="container">
           <el-header>
             <el-row justify="space-between" align="middle" class="row-bg">
-              <el-col :span="6">
+              <el-col class="wrap" :span="6">
                 <el-icon @click="collapse" class="relax"
                   ><img src="@/assets/logo.svg" /></el-icon
                 >Relax后台模板
@@ -64,13 +64,17 @@
                     <span class="el-dropdown-link">
                       选项
                       <el-icon class="el-icon--right">
-                        <arrow-down />
+                        <i-ep-arrow-down />
                       </el-icon>
                     </span>
                     <template #dropdown>
                       <el-dropdown-menu>
-                        <el-dropdown-item>退出</el-dropdown-item>
-                        <el-dropdown-item>切换账号</el-dropdown-item>
+                        <el-dropdown-item @click="logout"
+                          >退出</el-dropdown-item
+                        >
+                        <el-dropdown-item @click="logout"
+                          >切换账号</el-dropdown-item
+                        >
                       </el-dropdown-menu>
                     </template>
                   </el-dropdown>
@@ -78,7 +82,7 @@
               </el-col>
             </el-row>
           </el-header>
-          <el-page-header :content="title" />
+          <el-page-header @click="back" :content="title" />
           <el-main>
             <el-card class="box-card">
               <router-view v-slot="{ Component }">
@@ -98,16 +102,7 @@
 <script setup lang="ts">
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { http } from "@/utiles/http";
-import {
-  TrendCharts,
-  Setting,
-  House,
-  Stamp,
-  Edit,
-  ArrowDown,
-} from "@element-plus/icons-vue";
-import { ref, computed, onMounted } from "vue";
-import { useRoute } from "vue-router";
+// import { useRoute, useRouter } from "vue-router";
 const isCollapse = ref(false);
 function collapse() {
   isCollapse.value = !isCollapse.value;
@@ -118,14 +113,19 @@ onMounted(async () => {
   console.log(res);
 });
 
-function goBack() {
-  return;
+const router = useRouter();
+function back() {
+  return router.go(-1);
 }
 
 const route = useRoute();
 const title = computed(() => {
   return route.meta.title;
 });
+
+function logout() {
+  router.push("/login");
+}
 // const menu = ref({});
 </script>
 <style scoped>
@@ -152,6 +152,9 @@ const title = computed(() => {
   cursor: pointer;
   width: 30px;
   height: 30px;
+}
+.wrap {
+  white-space: nowrap;
 }
 .relax {
   width: 30px;
