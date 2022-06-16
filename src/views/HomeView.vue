@@ -52,8 +52,9 @@
             <el-row justify="space-between" align="middle" class="row-bg">
               <el-col class="wrap" :span="6">
                 <el-icon @click="collapse" class="relax"
-                  ><img src="@/assets/logo.svg" /></el-icon
-                >Relax后台模板
+                  ><img src="@/assets/logo.svg"
+                /></el-icon>
+                <span class="paddingleft">Relax后台模板</span>
               </el-col>
               <el-col :span="6">
                 <div class="avatar">
@@ -160,5 +161,13 @@ function logout() {
   width: 30px;
   height: 30px;
   vertical-align: middle;
+}
+.el-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.paddingleft {
+  padding-left: 10px;
 }
 </style>
