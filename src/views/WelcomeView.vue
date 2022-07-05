@@ -12,7 +12,7 @@
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  height: 50vh;
+  height: 80vh;
 }
 .welcome-title {
   color: #8785a2;

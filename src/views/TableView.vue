@@ -6,7 +6,7 @@
       class="search-input"
       placeholder="搜索内容"
       :suffix-icon="Search"
-    /><el-button type="primary">搜素</el-button>
+    /><el-button @click="search" type="primary">搜素</el-button>
 
     <!-- 表格 -->
     <el-table :data="tableData" style="width: 100%">
@@ -90,6 +90,10 @@ const handleCurrentChange = (val: number) => {
 
 //搜索关键词
 const searchKey = ref();
+//搜索
+function search() {
+  return;
+}
 </script>
 <style scoped>
 .search-input {
