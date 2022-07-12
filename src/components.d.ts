@@ -39,9 +39,11 @@ declare module '@vue/runtime-core' {
     IEpArrowDown: typeof import('~icons/ep/arrow-down')['default']
     IEpEdit: typeof import('~icons/ep/edit')['default']
     IEpHouse: typeof import('~icons/ep/house')['default']
+    IEpLoading: typeof import('~icons/ep/loading')['default']
     IEpSetting: typeof import('~icons/ep/setting')['default']
     IEpStamp: typeof import('~icons/ep/stamp')['default']
     IEpTrendCharts: typeof import('~icons/ep/trend-charts')['default']
+    IEpView: typeof import('~icons/ep/view')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

@@ -58,6 +58,11 @@
               </el-col>
               <el-col :span="6">
                 <div class="avatar">
+                  <div class="flex-d">
+                    <el-icon @click="full" class="fullscrren">
+                      <i-ep-view />
+                    </el-icon>
+                  </div>
                   <el-avatar
                     src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
                   />
@@ -104,6 +109,15 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { http } from "@/utiles/http";
 // import { useRoute, useRouter } from "vue-router";
+// 全屏
+import { useFullscreen } from "@vueuse/core";
+const { isFullscreen, enter, exit, toggle } = useFullscreen();
+
+// 全屏
+function full() {
+  return toggle();
+}
+
 const isCollapse = ref(false);
 function collapse() {
   isCollapse.value = !isCollapse.value;
@@ -169,5 +183,19 @@ function logout() {
 }
 .paddingleft {
   padding-left: 10px;
+}
+
+.fullscrren {
+  transition: all 0.3s;
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
+  border-bottom: 1px solid #ccc;
+}
+.fullscrren:hover {
+  background-color: #ccc;
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
 }
 </style>
