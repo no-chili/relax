@@ -4,54 +4,13 @@
       <el-container>
         <el-aside width="200">
           <!-- 菜单 -->
-          <el-menu
-            router
-            :collapse="isCollapse"
-            default-active="1"
-            class="full-height el-menu-vertical-demo"
-            background-color="#05668D"
-            active-text-color="#fff"
-          >
-            <div class="Logo">
-              <el-icon @click="collapse"
-                ><img src="@/assets/logo.svg"
-              /></el-icon>
-            </div>
-            <el-menu-item index="/">
-              <el-icon><i-ep-house /></el-icon>
-              <span>主页</span>
-            </el-menu-item>
-            <el-menu-item index="table">
-              <el-icon><i-ep-setting /></el-icon>
-              <span>表格</span>
-            </el-menu-item>
-            <el-sub-menu index="/">
-              <template #title>
-                <el-icon><i-ep-trendCharts /></el-icon>
-                <span>图表</span>
-              </template>
-              <el-menu-item index="dashboard">仪表盘</el-menu-item>
-              <el-menu-item index="state">统计图</el-menu-item>
-            </el-sub-menu>
-            <el-menu-item index="vetting">
-              <el-icon><i-ep-stamp /></el-icon>
-              <span>审批</span>
-            </el-menu-item>
-            <el-menu-item index="edit">
-              <el-icon><i-ep-edit /></el-icon>
-              <span>编辑</span>
-            </el-menu-item>
-            <el-menu-item index="setting">
-              <el-icon><i-ep-setting /></el-icon>
-              <span>设置</span>
-            </el-menu-item>
-          </el-menu>
+          <Cmenu/>
         </el-aside>
         <el-container class="container">
           <el-header>
             <el-row justify="space-between" align="middle" class="row-bg">
               <el-col class="wrap" :span="6">
-                <el-icon @click="collapse" class="relax"
+                <el-icon class="relax"
                   ><img src="@/assets/logo.svg"
                 /></el-icon>
                 <span class="paddingleft">Relax后台模板</span>
@@ -106,21 +65,15 @@
   </div>
 </template>
 <script setup lang="ts">
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { http } from "@/utiles/http";
-// import { useRoute, useRouter } from "vue-router";
 // 全屏
 import { useFullscreen } from "@vueuse/core";
+import Cmenu from '../layout/Cmenu.vue'
 const { isFullscreen, enter, exit, toggle } = useFullscreen();
 
 // 全屏
 function full() {
   return toggle();
-}
-
-const isCollapse = ref(false);
-function collapse() {
-  isCollapse.value = !isCollapse.value;
 }
 
 onMounted(async () => {
