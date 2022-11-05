@@ -23,11 +23,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { printTable } from "@/utiles/print";
 //调用打印
 function toPrintTable() {
-  const table = window.document.getElementById("vettingTable");
-  table ? printTable(table) : null;
+  
 }
 </script>
 <style scoped></style>
